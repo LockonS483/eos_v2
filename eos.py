@@ -37,7 +37,7 @@ class MyClient(discord.Client):
             rMessage = f"https://www.vx{linkType}" + rMessage
             print(rMessage)
 
-            await message.reply(f"There's a {linkType} link, here's a better embed:\n" + rMessage)
+            await message.reply(f"There's a {linkType} link, here's a better embed:\n" + rMessage, mention_author="False")
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
