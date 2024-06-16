@@ -9,6 +9,10 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
         if(message.author.id == client.user.id):
+            #print(message.embeds[0])
+            #print(message.embeds[0].url)
+            #print(message.embeds[0].fields)
+            #print(message.embeds[0].video)
             return
         
         #check if its twitter link
@@ -33,11 +37,11 @@ class MyClient(discord.Client):
         if linkType != "":
             await message.edit(suppress = True)
             midx = message.content.find(".com")
-            rMessage = message.content[midx:]
-            rMessage = f"https://www.vx{linkType}" + rMessage
-            print(rMessage)
+            rLink = message.content[midx:]
+            rLink = f"https://www.vx{linkType}" + rLink
 
-            await message.reply(f"There's a {linkType} link, here's a better embed:\n" + rMessage, mention_author="False")
+            rEmbed = discord.Embed(title="heh", url=rLink) #, color="0x505c84")
+            await message.reply(f"Embed Link: {rLink}", mention_author="False")
 
 load_dotenv()
 token = os.getenv("DISCORD_TOKEN")
